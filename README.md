@@ -6,7 +6,7 @@ Goal: Move "animals", randomly placed around a defined paddock or stable followi
 
 ## Project Structure
 
-Get_Those_Sheep/
+```plaintext
 ├── src/
 │   └── Flock.py
 │   └── Groid.py
