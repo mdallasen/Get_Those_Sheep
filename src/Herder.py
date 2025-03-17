@@ -1,7 +1,6 @@
 import numpy as np
 
 class Herder: 
-
     def __init__(self, position, velocity, flock):
 
         self.position = position
@@ -11,6 +10,8 @@ class Herder:
         self.herders = flock.herders
         self.max_speed = flock.max_speed_herders
         self.delta = flock.delta
+        self.acceleration = np.array([0.0, 0.0], dtype=float)
+        self.separation_strength_herder = flock.separation_strength_herder
 
     def update(self):
         """
@@ -18,8 +19,8 @@ class Herder:
         """
         separation = self.separation()
 
-        self.acceleration = separation 
-        self.velocity += self.acceleration
+        self.acceleration = separation
+        self.velocity += self.acceleration * self.delta 
         velocity_norm = np.linalg.norm(self.velocity)
 
         if velocity_norm > self.max_speed: 
@@ -48,7 +49,7 @@ class Herder:
             direction /= neighborhood
             norm = np.linalg.norm(direction)
             if norm > 0: 
-                direction = (direction / norm) * self.separation_strength
+                direction = (direction / norm) * self.separation_strength_herder
 
         return direction
     

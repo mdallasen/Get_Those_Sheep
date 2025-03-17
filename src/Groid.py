@@ -56,6 +56,7 @@ class Groid:
              if 0 < distance < self.groid_to_herder_distance: 
                 difference = (self.position - herder.position) / distance
                 direction += difference
+                neighborhood += 1
                     
         if neighborhood > 0: 
             direction /= neighborhood
@@ -108,7 +109,6 @@ class Groid:
             centroid /= neighborhood
             direction = centroid - self.position
             norm = np.linalg.norm(direction)
-
             if norm > 0: 
                 direction = (direction / norm) * self.cohesion_strength
 
