@@ -27,3 +27,10 @@ Goal: Move "animals", randomly placed around a defined paddock or stable followi
 - Main: Develops and deploys the simulation 
 - Stable: Defines the paramaters that the simulation operates in and the location of the "gate" / exit point that the herders attempt to drive the animals through
 
+## How to Use
+
+1. Go to terminal
+2. Clone repository in desired folder via git clone https://github.com/your-username/Automated-Herding.git
+3. Set up virtual enviornment and install dependencies via pip install -r requirements.txt
+4. Open coding environment and run main.py
+5. If wanting to change the parameters, go to Stable.py and change there
