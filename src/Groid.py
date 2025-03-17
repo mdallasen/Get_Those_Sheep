@@ -14,6 +14,7 @@ class Groid:
         self.alignment_strength = flock.alignment_strength
         self.cohesion_range = flock.cohesion_range
         self.cohesion_strength = flock.cohesion_strength
+        self.groid_to_herder_distance = flock.groid_to_herder_distance
 
     def update(self):
         """
@@ -35,7 +36,7 @@ class Groid:
 
     def separation(self):
         """ 
-        Steer away from nearby Groids to prevent crowding.
+        Steer away from nearby Groids and Herders.
         """
         neighborhood = 0
         direction = np.array([0.0, 0.0])
@@ -48,6 +49,13 @@ class Groid:
                     difference = (self.position - neighbour.position) / distance
                     direction += difference
                     neighborhood += 1 
+
+        for herder in self.flock.herders: 
+             distance = np.linalg.norm(self.position - herder.position)
+
+             if 0 < distance < self.groid_to_herder_distance: 
+                difference = (self.position - herder.position) / distance
+                direction += difference
                     
         if neighborhood > 0: 
             direction /= neighborhood
