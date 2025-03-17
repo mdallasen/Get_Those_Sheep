@@ -19,7 +19,7 @@ Goal: Move "animals", randomly placed around a defined paddock or stable followi
 └── requirements.txt
 ```
 
-## Source Description
+## Source Code Description
 
 - Flock: Initalizes and determines the parameters of the flock of animals
 - Groid: Defines the rules of each individual animal
