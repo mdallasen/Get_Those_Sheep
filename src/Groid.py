@@ -118,7 +118,10 @@ class Groid:
         """
         Wrap around boundaries or contain movement within limits.
         """
-        if self.position[0] < 0: self.position[0] = width
-        if self.position[0] > width: self.position[0] = 0
-        if self.position[1] < 0: self.position[1] = height
-        if self.position[1] > height: self.position[1] = 0
+        if self.position[0] < 0 or self.position[0] > width:
+            self.velocity[0] *= -1  
+            self.position[0] = max(0, min(self.position[0], width)) 
+
+        if self.position[1] < 0 or self.position[1] > height:
+            self.velocity[1] *= -1  
+            self.position[1] = max(0, min(self.position[1], height)) 
